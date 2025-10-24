@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SORA Hotels & Resorts</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="bg-gradient"> <!-- bg-gradient | bg-image | bg-video (per JS überschreibbar) -->
+  <!-- Optional: Videohintergrund (wird per JS nur bei bg-video sichtbar) -->
+  <video id="bgVideo" class="bg-video" playsinline muted loop preload="auto"></video>
+
+  <!-- Loader -->
+  <div id="loader" aria-hidden="true">
+    <div class="loader-inner glass">
+      <div class="spinner"></div>
+      <h1>Welcome to SORA Hotels & Resorts</h1>
+      <p class="muted">Preparing your beachside experience…</p>
+    </div>
+  </div>
+
+  <header class="topbar glass">
+    <div class="brand">
+      <div class="logo">SORA</div>
+      <span class="tagline">Hotels & Resorts</span>
+    </div>
+    <nav class="nav">
+      <button class="tab active" data-target="home">Home</button>
+      <button class="tab" data-target="status">Server Status</button>
+      <button class="tab" data-target="stage">SORA Stage</button>
+      <button class="tab" data-target="devlog">Update Log</button>
+      <button class="tab" data-target="maintenance">Maintenance</button>
+    </nav>
+  </header>
+
+  <main id="view">
+    <!-- HOME -->
+<section id="home" class="section active">
+  <!-- Hero: Bild als Hintergrund via CSS-Variable -->
+  <div class="hero" style="--hero-img: url('assets/Design ohne Titel.png');">
+    <div class="hero-bg"></div>
+    <div class="hero-oval"></div>
+    <div class="hero-copy">
+      <h2><span>Relaxed</span> <span>Resort</span> <span>Experience</span></h2>
+      <p class="muted">Modern and relaxed resort — crafted for Roblox.</p>
+      <a class="cta" href="#status" id="ctaStatus">Check status</a>
+    </div>
+  </div>
+
+  <div class="grid">
+    <article class="card glass reveal-up">
+      <h3>What is SORA Hotels and Resorts?</h3>
+      <p>SORA is a Roblox resort & spa experience with smooth interactions, cozy ambience and a modern beach aesthetic.</p>
+    </article>
+
+    <aside class="card glass reveal-right discord-card">
+  <div class="pill">Community</div>
+  <h3>Join our Discord</h3>
+  <p>News, updates and events — be the first to know.</p>
+  <button class="ghost" onclick="window.open('https://discord.gg/7fSXGrM4S9', '_blank')">Open Discord</button>
+</aside>
+  </div>
+</section>
+
+
+<!-- STATUS -->
+<section id="status" class="section">
+  <div class="section-head">
+    <h2>Server Status</h2>
+    <p class="muted">Live overview of our systems. <span id="lastUpdated" class="last">Last updated: —</span></p>
+  </div>
+
+  <div class="status-wrap">
+    <div class="status-block glass reveal-up hover-glow">
+      <div class="status-head">
+        <h3><!-- Icon + Titel -->
+          <span class="ico" aria-hidden="true">
+            <!-- server icon -->
+            <svg viewBox="0 0 24 24"><path d="M3 7h18v6H3zM3 15h18v6H3z"/><circle cx="7" cy="10" r="1.2"/><circle cx="7" cy="18" r="1.2"/></svg>
+          </span>
+          Hotel Server
+        </h3>
+      </div>
+      <p class="muted">Currently no hotel servers available.</p>
+      <div class="items"></div>
+    </div>
+
+    <div class="status-block glass reveal-up hover-glow">
+      <div class="status-head">
+        <h3>
+          <span class="ico" aria-hidden="true">
+            <!-- gamepad -->
+            <svg viewBox="0 0 24 24"><path d="M6 15l3-3h6l3 3M8 12v-2m8 2v-2"/><path d="M7 17H5a3 3 0 01-3-3v-1a5 5 0 015-5h10a5 5 0 015 5v1a3 3 0 01-3 3h-2"/></svg>
+          </span>
+          Resort Server
+        </h3>
+      </div>
+      <div class="items">
+        <div class="status-item" data-status-key="resort">
+          <div class="left">
+            <div class="title">SORA Resort</div>
+            <span class="chip">Roblox Game</span>
+          </div>
+          <div class="right">
+            <span class="badge online">Online</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ❗Plural + CheckIn System online -->
+    <div class="status-block glass reveal-up hover-glow">
+      <div class="status-head">
+        <h3>
+          <span class="ico" aria-hidden="true">
+            <!-- cog -->
+            <svg viewBox="0 0 24 24"><path d="M12 15.5A3.5 3.5 0 1 0 12 8.5a3.5 3.5 0 0 0 0 7z"/><path d="M19.4 15a7.8 7.8 0 0 0 .1-6l1.9-1.1-2-3.4-2.1.8a7.8 7.8 0 0 0-5.6-2.4A7.8 7.8 0 0 0 6 5.3l-2.1-.8-2 3.4L3.8 9a7.8 7.8 0 0 0 0 6l-1.9 1.1 2 3.4 2.1-.8a7.8 7.8 0 0 0 11.2 0l2.1.8 2-3.4L19.4 15z"/></svg>
+          </span>
+          Other services
+        </h3>
+      </div>
+      <div class="items">
+        <div class="status-item" data-status-key="checkin">
+          <div class="left">
+            <div class="title">CheckIn System</div>
+          </div>
+          <div class="right">
+            <span class="badge online">Online</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="legend">
+    <li><span class="dot online"></span>Online</li>
+    <li><span class="dot warning"></span>Incident</li>
+    <li><span class="dot maintenance"></span>Maintenance</li>
+    <li><span class="dot offline"></span>Offline</li>
+  </ul>
+</section>
+
+
+    <!-- STAGE -->
+    <section id="stage" class="section">
+      <div class="section-head">
+        <h2>SORA Stage</h2>
+        <p class="muted">Events & availability of the SORA Stage.</p>
+      </div>
+
+      <div class="stage-wrap">
+        <div class="card glass reveal-up hover-glow">
+          <div class="flex">
+            <div>
+              <div class="kicker">Current Status</div>
+              <div class="big">Stage <span class="badge online" data-status-key="stage">Open</span></div>
+            </div>
+          </div>
+          <div class="events">
+            <div class="event">
+              <div class="when">Oct 31, 2025</div>
+              <div class="name">Halloween Beach Party</div>
+              <div class="meta muted">20:00 UTC • Discord Music • Giveaways</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEV LOG -->
+    <section id="devlog" class="section">
+      <div class="section-head">
+        <h2>Development Log</h2>
+        <p class="muted">Latest updates — Summer Update</p>
+      </div>
+
+      <div class="dev-grid">
+        <article class="dev-card glass reveal-up hover-glow">
+          <div class="dev-head"><span class="chip">Update</span><time>Oct 1, 2025</time></div>
+          <p>Introduced new resort lighting system and polished spa ambience.</p>
+        </article>
+
+        <article class="dev-card glass reveal-up hover-glow">
+          <div class="dev-head"><span class="chip">Update</span><time>Oct 1, 2025</time></div>
+          <p>Spa Area added.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- MAINTENANCE -->
+    <section id="maintenance" class="section">
+      <div class="section-head">
+        <h2>Maintenance History</h2>
+        <p class="muted">Planned outages and restoration times.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item reveal-up">
+          <div class="dot maintenance"></div>
+          <div class="tl-card glass">
+            <div class="row">
+              <strong>Oct 31, 2025</strong>
+              <span class="badge maintenance">Planned</span>
+            </div>
+            <p>Servers offline for scheduled updates. Duration: 2h. Restored successfully.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer muted">
+    © <span id="yr"></span> SORA Hotels & Resorts — Relax. Breathe. Enjoy.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
