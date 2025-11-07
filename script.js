@@ -12,7 +12,7 @@ const CONFIG = {
    states: "online" | "warning" | "maintenance" | "offline" | "open" | "closed"
    ========================= */
 const STATUS = {
-  resort:  { state: "warning", label: "Error" },
+  resort:  { state: "online", label: "Online" },
   checkin: { state: "online", label: "Online" },
   stage:   { state: "closed",   label: "Closed"   },
 };
@@ -171,6 +171,7 @@ function touchLastUpdated(){
    setTimeout(()=> setStatus("resort","maintenance"), 8000);
    setTimeout(()=> bulkSetStatus({resort:"online", checkin:"online", stage:"closed"}), 12000);
 */
+
 
 
 
